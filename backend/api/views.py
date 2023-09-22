@@ -8,7 +8,7 @@ from rest_framework.authentication import BasicAuthentication, SessionAuthentica
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 
-from .serializer import OrderSerializer,  OrderCustomerDetailSerializer
+from .serializer import OrderSerializer,  OrderCustomerDetailSerializer, TestImageSerializer
 from .models import Order, OrderCustomerDetail
 from django.db import IntegrityError
 
@@ -121,3 +121,36 @@ class OrderView(
                 {"error": e}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
+
+class TestImageView(
+    views.APIView,
+):
+    parser_classes = [MultiPartParser, FormParser]
+
+    def post(self, request, *args, **kwargs):
+        try:
+            data = request.data
+
+            test_image = {
+                "image": data['image'],
+            }
+
+            test_image_serializer = TestImageSerializer(data=test_image)
+
+            if test_image_serializer.is_valid():
+                test_image_serializer.save()
+                return JsonResponse(
+                    test_image_serializer.data, status=status.HTTP_201_CREATED
+                )
+            else:
+                return Response(
+                    {
+                        "error": test_image_serializer.errors,
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+        except Exception as e:
+            return JsonResponse(
+                {"error": e}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
