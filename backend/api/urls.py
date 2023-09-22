@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path('', views.HomeView),
     path('login/', views.AuthenticationView.as_view()),
-    path('api-token-auth/', obtain_auth_token,
+    path('api-token-auth ', obtain_auth_token,
          name='api_token_auth'),  # Verify authentication
     path('order', views.OrderView.as_view(), name='order'),
     path('image', views.TestImageView.as_view(), name='image'),
