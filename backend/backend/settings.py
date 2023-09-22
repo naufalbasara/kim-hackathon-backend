@@ -31,7 +31,6 @@ DEBUG = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    '*'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
@@ -46,12 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders' 
     'rest_framework',  # DRF package
+    'corsheaders',
     'django_extensions',  # Great packaged to access abstract models
     'django_filters',  # Used with DRF
     'api',
-    'rest_framework.authtoken', # Used to enable token authentication
+    'rest_framework.authtoken',  # Used to enable token authentication
 ]
 
 MIDDLEWARE = [
