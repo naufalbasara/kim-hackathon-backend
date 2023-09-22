@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework import views, status, generics
 from rest_framework.response import Response
-from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 
@@ -22,7 +22,7 @@ def HomeView(request):
 
 
 class AuthenticationView(views.APIView):
-    authentication_classes = [BasicAuthentication, SessionAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
@@ -120,3 +120,4 @@ class OrderView(
             return JsonResponse(
                 {"error": e}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+

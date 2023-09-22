@@ -7,6 +7,7 @@ from django_extensions.db.models import (
 )
 # Create your models here.
 
+
 class User(
     AbstractUser,
     TimeStampedModel,
@@ -17,12 +18,13 @@ class User(
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     username = models.CharField(max_length=255, unique=True)
     email = models.EmailField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
-    
+
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['name', 'password']
 
@@ -64,3 +66,15 @@ class OrderCustomerDetail(
     customer_phone = models.CharField(max_length=255)
     organization_name = models.CharField(max_length=255)
     organization_website = models.CharField(max_length=255)
+
+
+class TestImage(
+    TimeStampedModel,
+    ActivatorModel,
+    models.Model,
+):
+    class Meta:
+        verbose_name = "TestImage"
+        verbose_name_plural = "TestImages"
+
+    image = models.ImageField(upload_to='images/', null=False)

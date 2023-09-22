@@ -81,7 +81,7 @@ REST_FRAMEWORK = {
         'rest_framework_json_api.parsers.JSONParser',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_RENDERER_CLASSES': (
@@ -112,10 +112,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.getenv('DB_HOST', 'localhost'),
-        'NAME': os.getenv('DB_NAME', 'kim_hackathon'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
+        'NAME': os.getenv('DB_NAME', 'hackaton'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'hackaton'),
         'PORT': os.getenv('DB_PORT', '5432'),
-        'USER': os.getenv('DB_USER', 'postgres'),
+        'USER': os.getenv('DB_USER', 'hackaton'),
     }
 }
 
