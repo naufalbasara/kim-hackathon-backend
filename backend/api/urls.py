@@ -18,5 +18,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('product/', views.functionName()), 
+    path('', views.HelloView.as_view()), 
 ]
