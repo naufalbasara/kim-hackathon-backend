@@ -28,7 +28,10 @@ SECRET_KEY = 'django-insecure-@@*$xv-a25cmaf4i!v!=zaawsjg@b%8a@f_438ml+we!90t=+*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'localhost:3000']
+ALLOWED_HOSTS = [
+    '*',  # Allow all hosts
+    "http://localhost:3000",
+]
 
 
 # Application definition
@@ -44,7 +47,8 @@ INSTALLED_APPS = [
     'django_extensions',  # Great packaged to access abstract models
     'django_filters',  # Used with DRF
     'api',
-    'rest_framework.authtoken',  # Used to enable token authentication
+    'rest_framework.authtoken',
+    'corsheaders'  # Used to enable token authentication
 ]
 
 MIDDLEWARE = [
@@ -55,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
