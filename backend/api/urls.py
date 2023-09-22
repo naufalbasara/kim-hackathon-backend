@@ -18,5 +18,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.HelloView.as_view()), 
+    path('', views.HomeView), 
+    path('login/', views.AuthenticationView.as_view()), # Verify authentication 
 ]
