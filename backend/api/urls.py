@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     path('', views.HomeView), 
     path('login/', views.AuthenticationView.as_view()), # Verify authentication 
+    path('order', views.OrderView.as_view(), name='order'),
 ]

@@ -24,3 +24,4 @@ inflection==0.5.1
 python-dotenv==0.21.0
 sqlparse==0.4.3
 tzdata==2022.6
+pillow
