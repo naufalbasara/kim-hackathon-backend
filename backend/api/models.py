@@ -25,8 +25,8 @@ class User(
     password = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
 
-    EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = ['email', 'password']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['name', 'password']
 
     def __str__(self):
         return self.email
